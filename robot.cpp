@@ -4,6 +4,7 @@ using namespace std;
 
 int robotX = 0;
 int robotY = 0;
+int score = 0;
 
 void moveUp() {
     if (robotY > 0) robotY--;

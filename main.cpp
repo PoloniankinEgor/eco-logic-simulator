@@ -6,6 +6,8 @@ using namespace std;
 
 extern int robotX;
 extern int robotY;
+extern int score;
+extern int moves;
 
 int main() {
     
@@ -23,9 +25,13 @@ string commands;
 
     while (true) {
 
-        drawMap();
+    drawMap();
 
-        cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
+    cout << "Собрано мусора: " << score << endl;
+    cout << "Количество ходов: " << moves << endl;
+    cout << endl;
+
+    cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
         cout << "Команды: UP DOWN LEFT RIGHT CLEAN EXIT" << endl;
         cout << "Введите команду: ";
 

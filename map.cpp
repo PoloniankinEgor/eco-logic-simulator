@@ -42,4 +42,10 @@ void cleanTrash() {
     } else {
         cout << "Здесь нет мусора!" << endl;
     }
+    if (trashCount == 0) {
+
+    cout << "Поздравляем! Весь лес очищен!" << endl;
+    cout << "Количество ходов: " << moves << endl;
+    cout << "Собрано мусора: " << score << endl;
+}
 }

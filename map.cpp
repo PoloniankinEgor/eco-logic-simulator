@@ -46,9 +46,15 @@ void drawMap() {
 void cleanTrash() {
 
     if (mapGrid[robotY][robotX] == 'M') {
-        mapGrid[robotY][robotX] = '.';
-        cout << "Мусор убран!" << endl;
-    } else {
+
+    mapGrid[robotY][robotX] = '.';
+
+    score++;
+
+    trashCount--;
+
+    cout << "Мусор убран!" << endl;
+} else {
         cout << "Здесь нет мусора!" << endl;
     }
     if (trashCount == 0) {

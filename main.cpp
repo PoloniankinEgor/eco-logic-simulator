@@ -7,6 +7,7 @@ extern int robotX;
 extern int robotY;
 
 int main() {
+    
 
     createTrash();
     cout << "Добро пожаловать в Симулятор Эко-Логики!" << endl;

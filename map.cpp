@@ -7,6 +7,8 @@ const int SIZE = 10;
 
 extern int robotX;
 extern int robotY;
+extern int score;
+extern int moves;
 
 vector<vector<char>> mapGrid(SIZE, vector<char>(SIZE, '.'));
 

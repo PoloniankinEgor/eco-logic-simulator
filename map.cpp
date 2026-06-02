@@ -12,6 +12,7 @@ extern int score;
 extern int moves;
 
 vector<vector<char>> mapGrid(SIZE, vector<char>(SIZE, '.'));
+int trashCount = 3;
 
 void createTrash() {
 

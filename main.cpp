@@ -9,6 +9,9 @@ extern int robotY;
 int main() {
 
     createTrash();
+    cout << "Добро пожаловать в Симулятор Эко-Логики!" << endl;
+cout << "Очистите лес от мусора и завершите симуляцию." << endl;
+cout << endl;
 
     string command;
 

@@ -24,7 +24,7 @@ cout << endl;
         cout << "Команды: UP DOWN LEFT RIGHT CLEAN EXIT" << endl;
         cout << "Введите команду: ";
 
-        cin >> command;
+        getline(cin, commands);
 
         if (command == "UP") moveUp();
         else if (command == "DOWN") moveDown();

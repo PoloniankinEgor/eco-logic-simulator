@@ -18,8 +18,8 @@ cout << endl;
 cout << "Управляйте роботом и очищайте лес от мусора" << endl;
 cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
 cout << "===================================" << endl;
-
-    string command;
+    
+string commands;
 
     while (true) {
 

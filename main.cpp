@@ -31,12 +31,30 @@ string commands;
 
         getline(cin, commands);
 
-        if (command == "UP") moveUp();
-        else if (command == "DOWN") moveDown();
-        else if (command == "LEFT") moveLeft();
-        else if (command == "RIGHT") moveRight();
-        else if (command == "CLEAN") cleanTrash();
-        else if (command == "EXIT") break;
+stringstream ss(commands);
+
+string command;
+
+while (ss >> command) {
+
+    if (command == "UP")
+        moveUp();
+
+    else if (command == "DOWN")
+        moveDown();
+
+    else if (command == "LEFT")
+        moveLeft();
+
+    else if (command == "RIGHT")
+        moveRight();
+
+    else if (command == "CLEAN")
+        cleanTrash();
+
+    else if (command == "EXIT")
+        return 0;
+}
     }
 
     return 0;

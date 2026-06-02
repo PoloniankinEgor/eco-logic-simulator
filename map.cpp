@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
 
 using namespace std;
 
@@ -13,9 +14,16 @@ extern int moves;
 vector<vector<char>> mapGrid(SIZE, vector<char>(SIZE, '.'));
 
 void createTrash() {
-    mapGrid[2][3] = 'M';
-    mapGrid[5][5] = 'M';
-    mapGrid[7][1] = 'M';
+
+    srand(time(0));
+
+    for (int i = 0; i < 3; i++) {
+
+        int x = rand() % 10;
+        int y = rand() % 10;
+
+        mapGrid[y][x] = 'M';
+    }
 }
 
 void drawMap() {

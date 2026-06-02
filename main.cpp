@@ -33,6 +33,7 @@ string commands;
 
     cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
         cout << "Команды: UP DOWN LEFT RIGHT CLEAN EXIT" << endl;
+        cout << "Можно вводить несколько команд сразу." << endl;
         cout << "Введите команду: ";
 
         getline(cin, commands);

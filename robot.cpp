@@ -90,3 +90,18 @@ void moveRight()
         robot.moves++;
     }
 }
+
+void addEnergy(int value)
+{
+    robot.energy += value;
+}
+
+void spendEnergy(int value)
+{
+    robot.energy -= value;
+}
+
+void addScore()
+{
+    robot.score++;
+}

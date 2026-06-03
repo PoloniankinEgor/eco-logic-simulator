@@ -40,6 +40,27 @@ void createTrash() {
         int y = rand() % SIZE;
         mapGrid[y][x] = 'S';
     }
+    int e3 = 1 + rand() % 3;
+int e5 = 1 + rand() % 3;
+int e10 = 1 + rand() % 2;
+
+for (int i = 0; i < e3; i++) {
+    int x = rand() % SIZE;
+    int y = rand() % SIZE;
+    mapGrid[y][x] = '3';
+}
+
+for (int i = 0; i < e5; i++) {
+    int x = rand() % SIZE;
+    int y = rand() % SIZE;
+    mapGrid[y][x] = '5';
+}
+
+for (int i = 0; i < e10; i++) {
+    int x = rand() % SIZE;
+    int y = rand() % SIZE;
+    mapGrid[y][x] = 'T';
+}
 
   
 }

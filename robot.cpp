@@ -1,6 +1,9 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
+
+void drawMap();
 
 class Robot
 {
@@ -109,14 +112,38 @@ void moveRight()
 void moveTo(int targetX, int targetY)
 {
     while (robot.x < targetX)
+    {
         moveRight();
 
+        drawMap();
+
+        Sleep(200);
+    }
+
     while (robot.x > targetX)
+    {
         moveLeft();
 
+        drawMap();
+
+        Sleep(200);
+    }
+
     while (robot.y < targetY)
+    {
         moveDown();
 
+        drawMap();
+
+        Sleep(200);
+    }
+
     while (robot.y > targetY)
+    {
         moveUp();
+
+        drawMap();
+
+        Sleep(200);
+    }
 }

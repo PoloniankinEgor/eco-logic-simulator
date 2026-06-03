@@ -2,43 +2,66 @@
 
 using namespace std;
 
-int robotX = 0;
-int robotY = 0;
-int score = 0;
-int moves = 0;
+class Robot
+{
+public:
+
+    int x;
+    int y;
+
+    int energy;
+
+    int score;
+
+    int moves;
+
+    Robot()
+    {
+        x = 0;
+        y = 0;
+
+        energy = 20;
+
+        score = 0;
+
+        moves = 0;
+    }
+};
+
+Robot robot;
 
 void moveUp() {
 
-    if (robotY > 0) {
+    if (robot.y > 0) {
 
-        robotY--;
-        moves++;
+        robot.y--;
+        robot.moves++;
     }
 }
 
 void moveDown() {
 
-    if (robotY < 9) {
+    if (robot.y < 9) {
 
-        robotY++;
-        moves++;
+        robot.y++;
+        robot.moves++;
     }
 }
 
 void moveLeft() {
 
-    if (robotX > 0) {
+    if (robot.x > 0) {
 
-        robotX--;
-        moves++;
+        robot.x--;
+        robot.moves++;
     }
 }
 
 void moveRight() {
 
-    if (robotX < 9) {
+    if (robot.x < 9) {
 
-        robotX++;
-        moves++;
+        robot.x++;
+        robot.moves++;
     }
 }

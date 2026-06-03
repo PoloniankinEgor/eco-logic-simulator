@@ -12,34 +12,36 @@ extern int score;
 extern int moves;
 
 vector<vector<char>> mapGrid(SIZE, vector<char>(SIZE, '.'));
-int trashCount = 3;
 
 void createTrash() {
 
     srand(time(0));
 
-    int created = 0;
+  
 
-    while (created < 3) {
+    int food = 2 + rand() % 4;     // 2–5
+    int liquid = 2 + rand() % 4;   // 2–5
+    int solid = 1 + rand() % 4;    // 1–4
 
+    for (int i = 0; i < food; i++) {
         int x = rand() % SIZE;
         int y = rand() % SIZE;
-
-        if (mapGrid[y][x] != 'M') {
-
-            mapGrid[y][x] = 'M';
-            created++;
-        }
+        mapGrid[y][x] = 'F';
     }
-}
 
-    for (int i = 0; i < 3; i++) {
-
-        int x = rand() % 10;
-        int y = rand() % 10;
-
-        mapGrid[y][x] = 'M';
+    for (int i = 0; i < liquid; i++) {
+        int x = rand() % SIZE;
+        int y = rand() % SIZE;
+        mapGrid[y][x] = 'L';
     }
+
+    for (int i = 0; i < solid; i++) {
+        int x = rand() % SIZE;
+        int y = rand() % SIZE;
+        mapGrid[y][x] = 'S';
+    }
+
+  
 }
 
 void drawMap() {
@@ -60,22 +62,24 @@ void drawMap() {
 
 void cleanTrash() {
 
-    if (mapGrid[robotY][robotX] == 'M') {
+    char cell = mapGrid[robotY][robotX];
 
-    mapGrid[robotY][robotX] = '.';
-
-    score++;
-
-    trashCount--;
-
-    cout << "Мусор убран!" << endl;
-} else {
-        cout << "Здесь нет мусора!" << endl;
+    if (cell == 'F') {
+        mapGrid[robotY][robotX] = '.';
+        score++;
+        cout << "Пищевой мусор убран" << endl;
     }
-    if (trashCount == 0) {
-
-    cout << "Поздравляем! Весь лес очищен!" << endl;
-    cout << "Количество ходов: " << moves << endl;
-    cout << "Собрано мусора: " << score << endl;
-}
+    else if (cell == 'L') {
+        mapGrid[robotY][robotX] = '.';
+        score++;
+        cout << "Жидкий мусор убран" << endl;
+    }
+    else if (cell == 'S') {
+        mapGrid[robotY][robotX] = '.';
+        score++;
+        cout << "Твёрдый мусор убран" << endl;
+    }
+    else {
+        cout << "Здесь нет мусора" << endl;
+    }
 }

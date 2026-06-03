@@ -1,67 +1,43 @@
 #include <iostream>
-#include <sstream>
+
 #include "functions.h"
 
 using namespace std;
 
-extern int robotX;
-extern int robotY;
-extern int score;
-extern int moves;
-
-int main() {
-    
-
+int main()
+{
     createTrash();
-   cout << "Добро пожаловать в Симулятор Эко-Логики!" << endl;
-cout << "Очистите лес от мусора и завершите симуляцию." << endl;
-cout << endl;
 
-cout << "Управляйте роботом и очищайте лес от мусора" << endl;
-cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
-cout << "===================================" << endl;
-    
-string commands;
-
-    while (true) {
+    cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
+    cout << "Начальная энергия: 20" << endl;
+    cout << endl;
 
     drawMap();
 
-    cout << "Собрано мусора: " << score << endl;
-    cout << "Количество ходов: " << moves << endl;
     cout << endl;
+    cout << "Введите GO для запуска робота" << endl;
 
-    cout << "===== СИМУЛЯТОР ЭКО-ЛОГИКИ =====" << endl;
-        cout << "Команды: UP DOWN LEFT RIGHT CLEAN EXIT" << endl;
-        cout << "Можно вводить несколько команд сразу." << endl;
-        cout << "Введите команду: ";
+    string command;
 
-        getline(cin, commands);
+    cin >> command;
 
-stringstream ss(commands);
+    if (command == "GO")
+    {
+        autoClean();
 
-string command;
+        cout << endl;
 
-while (ss >> command) {
+        cout << "Собрано мусора: "
+             << getRobotScore()
+             << endl;
 
-    if (command == "UP")
-        moveUp();
+        cout << "Осталось энергии: "
+             << getRobotEnergy()
+             << endl;
 
-    else if (command == "DOWN")
-        moveDown();
-
-    else if (command == "LEFT")
-        moveLeft();
-
-    else if (command == "RIGHT")
-        moveRight();
-
-    else if (command == "CLEAN")
-        cleanTrash();
-
-    else if (command == "EXIT")
-        return 0;
-}
+        cout << "Количество ходов: "
+             << getRobotMoves()
+             << endl;
     }
 
     return 0;

@@ -55,6 +55,21 @@ int getRobotMoves()
     return robot.moves;
 }
 
+void addEnergy(int value)
+{
+    robot.energy += value;
+}
+
+void spendEnergy(int value)
+{
+    robot.energy -= value;
+}
+
+void addScore()
+{
+    robot.score++;
+}
+
 void moveUp()
 {
     if (robot.y > 0)
@@ -91,17 +106,17 @@ void moveRight()
     }
 }
 
-void addEnergy(int value)
+void moveTo(int targetX, int targetY)
 {
-    robot.energy += value;
-}
+    while (robot.x < targetX)
+        moveRight();
 
-void spendEnergy(int value)
-{
-    robot.energy -= value;
-}
+    while (robot.x > targetX)
+        moveLeft();
 
-void addScore()
-{
-    robot.score++;
+    while (robot.y < targetY)
+        moveDown();
+
+    while (robot.y > targetY)
+        moveUp();
 }

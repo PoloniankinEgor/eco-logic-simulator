@@ -9,6 +9,14 @@ const int SIZE = 10;
 int getRobotX();
 int getRobotY();
 
+int getRobotEnergy();
+
+void addEnergy(int value);
+void spendEnergy(int value);
+void addScore();
+
+void moveTo(int x, int y);
+
 vector<vector<char>> mapGrid(SIZE, vector<char>(SIZE, '.'));
 
 class Trash
@@ -68,51 +76,27 @@ void createTrash()
     int liquid = 2 + rand() % 4;
     int solid = 1 + rand() % 4;
 
-    for (int i = 0; i < food; i++)
-    {
-        int x = rand() % SIZE;
-        int y = rand() % SIZE;
-        mapGrid[y][x] = 'F';
-    }
-
-    for (int i = 0; i < liquid; i++)
-    {
-        int x = rand() % SIZE;
-        int y = rand() % SIZE;
-        mapGrid[y][x] = 'L';
-    }
-
-    for (int i = 0; i < solid; i++)
-    {
-        int x = rand() % SIZE;
-        int y = rand() % SIZE;
-        mapGrid[y][x] = 'S';
-    }
-
     int e3 = 1 + rand() % 3;
     int e5 = 1 + rand() % 3;
     int e10 = 1 + rand() % 2;
 
+    for (int i = 0; i < food; i++)
+        mapGrid[rand() % SIZE][rand() % SIZE] = 'F';
+
+    for (int i = 0; i < liquid; i++)
+        mapGrid[rand() % SIZE][rand() % SIZE] = 'L';
+
+    for (int i = 0; i < solid; i++)
+        mapGrid[rand() % SIZE][rand() % SIZE] = 'S';
+
     for (int i = 0; i < e3; i++)
-    {
-        int x = rand() % SIZE;
-        int y = rand() % SIZE;
-        mapGrid[y][x] = '3';
-    }
+        mapGrid[rand() % SIZE][rand() % SIZE] = '3';
 
     for (int i = 0; i < e5; i++)
-    {
-        int x = rand() % SIZE;
-        int y = rand() % SIZE;
-        mapGrid[y][x] = '5';
-    }
+        mapGrid[rand() % SIZE][rand() % SIZE] = '5';
 
     for (int i = 0; i < e10; i++)
-    {
-        int x = rand() % SIZE;
-        int y = rand() % SIZE;
-        mapGrid[y][x] = 'T';
-    }
+        mapGrid[rand() % SIZE][rand() % SIZE] = 'T';
 }
 
 void drawMap()
@@ -140,44 +124,80 @@ void cleanTrash()
 
     char cell = mapGrid[y][x];
 
-    if (cell == 'F')
+    if (cell == 'F' && getRobotEnergy() >= 2)
     {
+        spendEnergy(2);
+        addScore();
         mapGrid[y][x] = '.';
-        cout << "Пищевой мусор убран" << endl;
     }
 
-    else if (cell == 'L')
+    if (cell == 'L' && getRobotEnergy() >= 3)
     {
+        spendEnergy(3);
+        addScore();
         mapGrid[y][x] = '.';
-        cout << "Жидкий мусор убран" << endl;
     }
 
-    else if (cell == 'S')
+    if (cell == 'S' && getRobotEnergy() >= 5)
     {
+        spendEnergy(5);
+        addScore();
         mapGrid[y][x] = '.';
-        cout << "Твердый мусор убран" << endl;
     }
 
-    else if (cell == '3')
+    if (cell == '3')
     {
+        addEnergy(3);
         mapGrid[y][x] = '.';
-        cout << "+3 энергии" << endl;
     }
 
-    else if (cell == '5')
+    if (cell == '5')
     {
+        addEnergy(5);
         mapGrid[y][x] = '.';
-        cout << "+5 энергии" << endl;
     }
 
-    else if (cell == 'T')
+    if (cell == 'T')
     {
+        addEnergy(10);
         mapGrid[y][x] = '.';
-        cout << "+10 энергии" << endl;
+    }
+}
+
+void autoClean()
+{
+    for (int y = 0; y < SIZE; y++)
+    {
+        for (int x = 0; x < SIZE; x++)
+        {
+            if (
+                mapGrid[y][x] == '3' ||
+                mapGrid[y][x] == '5' ||
+                mapGrid[y][x] == 'T'
+            )
+            {
+                moveTo(x, y);
+                cleanTrash();
+            }
+        }
     }
 
-    else
+    for (int y = 0; y < SIZE; y++)
     {
-        cout << "Здесь ничего нет" << endl;
+        for (int x = 0; x < SIZE; x++)
+        {
+            if (
+                mapGrid[y][x] == 'F' ||
+                mapGrid[y][x] == 'L' ||
+                mapGrid[y][x] == 'S'
+            )
+            {
+                moveTo(x, y);
+                cleanTrash();
+            }
+        }
     }
+
+    cout << endl;
+    cout << "Очистка завершена!" << endl;
 }

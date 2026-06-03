@@ -30,37 +30,62 @@ public:
 
 Robot robot;
 
-void moveUp() {
+int getRobotX()
+{
+    return robot.x;
+}
 
-    if (robot.y > 0) {
+int getRobotY()
+{
+    return robot.y;
+}
 
+int getRobotEnergy()
+{
+    return robot.energy;
+}
+
+int getRobotScore()
+{
+    return robot.score;
+}
+
+int getRobotMoves()
+{
+    return robot.moves;
+}
+
+void moveUp()
+{
+    if (robot.y > 0)
+    {
         robot.y--;
         robot.moves++;
     }
 }
 
-void moveDown() {
-
-    if (robot.y < 9) {
-
+void moveDown()
+{
+    if (robot.y < 9)
+    {
         robot.y++;
         robot.moves++;
     }
 }
 
-void moveLeft() {
-
-    if (robot.x > 0) {
-
+void moveLeft()
+{
+    if (robot.x > 0)
+    {
         robot.x--;
         robot.moves++;
     }
 }
 
-void moveRight() {
-
-    if (robot.x < 9) {
-
+void moveRight()
+{
+    if (robot.x < 9)
+    {
         robot.x++;
         robot.moves++;
     }
